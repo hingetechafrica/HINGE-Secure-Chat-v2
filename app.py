@@ -9,10 +9,13 @@ How to run:
 3. Open http://localhost:5000 in your browser
 """
 
-from flask import Flask, request, jsonify, render_template_string
+from flask import Flask, request, jsonify, seng_file
 from chatbot import get_response
 
 app = Flask(__name__)
+@app.route('/hinge_logo.png')
+def serve_logo():
+    return send_file('hinge_logo.png', mimetype='image/png')
 
 # ============================================================
 # HOMEPAGE - Clean Modern Design
@@ -25,7 +28,7 @@ HTML_PAGE = """
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HINGE TECH - AI Security for Africa</title>
+<title>HINGE AI - AI Security for Africa</title>
 <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
   body { background: #f0f2f5; color: #222; }
@@ -111,7 +114,9 @@ HTML_PAGE = """
 <body>
 
 <div class="header">
-  <h1>🛡️ HINGE <span>TECH</span> - AI Security for Africa</h1>
+ <img src="/hinge_logo.png" alt="HINGE TECH Logo" style="width:70px; height: auto; display: block; margin: 0 auto 8px auto; border-radius: 12px;"> 
+  <h1>HINGE <span>AI</span> - AI Security for Africa</h1>
+   <p style="font-size: 12px; opacity: 0.8; margin-top: -8px;">by HINGE TECH</p>
   <p>Ask me about keeping your business safe.</p>
 </div>
 
@@ -127,7 +132,6 @@ HTML_PAGE = """
       <button onclick="quickAsk('What is ransomware?')">Ransomware</button>
       <button onclick="quickAsk('What is Zero Trust?')">Zero Trust</button>
       <button onclick="quickAsk('Give me small business security checklist')">Small Business Checklist</button>
-      <button onclick="quickAsk('How do I report fraud to EFCC?')">Report to EFCC</button>
     </div>
 
     <div class="input-area">
