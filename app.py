@@ -9,7 +9,7 @@ How to run:
 3. Open http://localhost:5000 in your browser
 """
 
-from flask import Flask, request, jsonify, seng_file
+from flask import Flask, request, jsonify, send_file
 from chatbot import get_response
 
 app = Flask(__name__)
