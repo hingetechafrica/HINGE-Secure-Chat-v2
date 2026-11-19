@@ -8,8 +8,8 @@ How to run:
 2. python app.py
 3. Open http://localhost:5000 in your browser
 """
-
-from flask import Flask, request, jsonify, send_file
+import os
+from flask import Flask, request, jsonify, send_file, render_template_string
 from chatbot import get_response
 
 app = Flask(__name__)
